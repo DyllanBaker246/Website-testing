@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Overview</title>
+    <style>
+      :root{
+        --gray-100:#f3f3f3;
+        --gray-200:#e5e5e5;
+        --gray-500:#9aa0a6;
+        --text:#111;
+        --yellow:#f4b53a;
+        --blue:#bfe6ff;
+        --btn:#111;
+        --card:#fff;
+      }
+
+      *{ box-sizing:border-box; }
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color:var(--text);
+        background:#fff;
+      }
+
+      /* Page frame */
+      .page{
+        width:min(1400px, 100%);
+        margin:0 auto;
+        border:1px solid var(--gray-200);
+      }
+
+      /* Top bar */
+      .topbar{
+        background:var(--gray-200);
+        padding:14px 14px 10px;
+        position:sticky;
+        top:0;
+        z-index:10;
+      }
+
+      .topbar .title-pill{
+        display:inline-block;
+        background:var(--gray-100);
+        border:1px solid #d7d7d7;
+        border-radius:10px;
+        padding:10px 14px;
+        font-weight:600;
+        letter-spacing:.2px;
+      }
+
+      .navrow{
+        margin-top:10px;
+        background:#fff;
+        border:1px solid #d7d7d7;
+        border-radius:8px;
+        padding:18px 18px;
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:54px;
+      }
+
+      .navrow a{
+        text-decoration:none;
+        color:#222;
+        font-size:22px;
+        font-weight:500;
+      }
+
+      .hamburger{
+        width:38px;
+        height:28px;
+        display:grid;
+        gap:6px;
+        margin-left:10px;
+      }
+      .hamburger span{
+        display:block;
+        height:3px;
+        background:#111;
+        border-radius:2px;
+      }
+
+      /* Main yellow area */
+      .content{
+        background:var(--yellow);
+        padding:36px 34px 42px;
+        position:relative;
+        overflow:hidden;
+      }
+
+      .layout{
+        display:grid;
+        grid-template-columns: 140px 420px 280px 1fr;
+        gap:34px;
+        align-items:center;
+      }
+
+      /* Logo circle */
+      .logo{
+        width:112px;
+        height:112px;
+        border-radius:999px;
+        background:#fff;
+        display:grid;
+        place-items:center;
+        text-align:center;
+        font-weight:700;
+        line-height:1.1;
+        border:2px solid rgba(0,0,0,.08);
+      }
+
+      /* Blue summary card */
+      .summary{
+        background:var(--blue);
+        border-radius:6px;
+        min-height:360px;
+        display:grid;
+        place-items:center;
+        padding:26px;
+      }
+      .summary h2{
+        margin:0;
+        font-size:46px;
+        font-weight:500;
+        text-align:center;
+      }
+      .summary h2 small{
+        display:block;
+        margin-top:14px;
+        font-size:34px;
+        font-weight:500;
+      }
+
+      /* Action buttons */
+      .actions{
+        display:flex;
+        flex-direction:column;
+        gap:28px;
+        align-items:flex-start;
+      }
+      .btn{
+        background:var(--btn);
+        color:#fff;
+        border:0;
+        border-radius:6px;
+        padding:16px 28px;
+        font-size:20px;
+        font-weight:600;
+        cursor:pointer;
+        box-shadow:0 1px 0 rgba(255,255,255,.15) inset;
+      }
+      .btn:active{ transform:translateY(1px); }
+
+      /* Transaction list card */
+      .list-card{
+        background:var(--card);
+        border-radius:8px;
+        border:3px solid rgba(0,0,0,.35);
+        padding:18px;
+        max-width:520px;
+        margin-left:auto;
+      }
+      .list-inner{
+        border:3px solid rgba(0,0,0,.25);
+        border-radius:8px;
+        padding:18px 18px 14px;
+      }
+      .list-title{
+        border:3px solid rgba(0,0,0,.25);
+        border-radius:8px;
+        padding:18px;
+        text-align:center;
+        font-weight:600;
+        color:#333;
+        background:#fff;
+        margin-bottom:18px;
+      }
+      .lines{
+        display:grid;
+        gap:10px;
+      }
+      .line{
+        height:10px;
+        border-radius:999px;
+        background:#cfcfcf;
+      }
+
+      /* Responsiveness */
+      @media (max-width: 1100px){
+        .layout{
+          grid-template-columns: 140px 1fr;
+          grid-template-rows: auto auto auto;
+          align-items:start;
+        }
+        .actions{ order:3; }
+        .list-card{ order:4; max-width:none; width:100%; }
+        .summary{ min-height:300px; }
+      }
+
+      @media (max-width: 720px){
+        .navrow{
+          justify-content:space-between;
+          gap:18px;
+        }
+        .navrow a{ font-size:18px; }
+        .summary h2{ font-size:34px; }
+        .summary h2 small{ font-size:26px; }
+        .layout{ grid-template-columns: 1fr; }
+        .logo{ width:96px; height:96px; }
+        .actions{ align-items:stretch; }
+        .btn{ width:100%; text-align:center; }
+        .list-card{ margin-left:0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="title-pill">Financial Overview</div>
+
+        <nav class="navrow" aria-label="Primary">
+          <a href="#">HomePage</a>
+          <a href="#">View Notes</a>
+          <a href="#">Calendar</a>
+          <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
+            <span></span><span></span><span></span>
+          </div>
+        </nav>
+      </header>
+
+      <main class="content">
+        <div class="layout">
+          <div class="logo">YOUR<br />LOGO</div>
+
+          <section class="summary" aria-label="Savings summary">
+            <h2>
+              Your Savings/<br />Spendings is &lt;$<br />
+              <small>amount&gt;</small>
+            </h2>
+          </section>
+
+          <section class="actions" aria-label="Actions">
+            <button class="btn">Add Transaction</button>
+            <button class="btn">Delete Transaction</button>
+            <button class="btn">Edit Transaction</button>
+          </section>
+
+          <section class="list-card" aria-label="Transaction list">
+            <div class="list-inner">
+              <div class="list-title">Transaction<br />List</div>
+              <div class="lines" aria-hidden="true">
+                <div class="line"></div><div class="line"></div><div class="line"></div>
+                <div class="line"></div><div class="line"></div><div class="line"></div>
+                <div class="line"></div><div class="line"></div><div class="line"></div>
+                <div class="line"></div><div class="line"></div><div class="line"></div>
+                <div class="line"></div><div class="line"></div><div class="line"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
